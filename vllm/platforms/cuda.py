@@ -340,6 +340,10 @@ class CudaPlatformBase(Platform):
             logger.info("Using DifferentialFlashAttention backend.")
             return ("vllm.attention.backends.differential_flash_attn."
                     "DifferentialFlashAttentionBackend")
+        elif selected_backend == _Backend.NATIVE_SPARSE_ATTENTION:
+            logger.info("Using Native Sparse Attention backend.")
+            return ("vllm.attention.backends.native_sparse_attn."
+                    "NativeSparseAttentionBackend")
         elif selected_backend == _Backend.FLASH_ATTN:
             pass
         elif selected_backend:
